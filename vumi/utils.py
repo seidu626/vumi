@@ -301,7 +301,7 @@ def build_web_site(resources, site_class=None):
     # sort by ascending path length to make sure we create
     # resources lower down in the path earlier
     resources = resources.items()
-    resources = sorted(resources, key=lambda r: len(r[0]))
+    resources = sorted(resources, key=lambda r: len(r[0]) if r[0] is None else 0)
 
     def create_node(node, path):
         if path in node.children:
